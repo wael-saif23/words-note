@@ -18,4 +18,24 @@ class WordModel {
     this.arabicExamples = const [],
     this.englishExamples = const [],
   });
+
+  WordModel addSimilarWord(String similarWord, bool isArabicSimilarWord) {
+   List<String> newSimilarWords;
+   if (isArabicSimilarWord) {
+     newSimilarWords = [...arabicSimilarWords, similarWord];
+   } else {
+     newSimilarWords = [...englishSimilarWords, similarWord];
+   }
+    return WordModel(
+      idAtDataBase: idAtDataBase,
+      text: text,
+      isArabic: isArabic,
+      colorCode: colorCode,
+      arabicSimilarWords: isArabicSimilarWord ? newSimilarWords : arabicSimilarWords,
+      englishSimilarWords: !isArabicSimilarWord ? newSimilarWords : englishSimilarWords,
+      arabicExamples: arabicExamples,
+      englishExamples: englishExamples,
+    );
+  }
+  
 }
