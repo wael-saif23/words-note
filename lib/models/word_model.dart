@@ -63,7 +63,7 @@ class WordModel {
       arabicSimilarWords: arabicSimilarWords,
       englishSimilarWords: englishSimilarWords,
       arabicExamples: isArabicExampleWord ? newExamples : arabicExamples,
-      englishExamples: isArabicExampleWord ? englishExamples : newExamples,
+      englishExamples: !isArabicExampleWord ? englishExamples : newExamples,
     );
   }
 // removeSimilarWord

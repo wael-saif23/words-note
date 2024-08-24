@@ -56,6 +56,52 @@ class WriteWordsCubit extends Cubit<WriteWordsState> {
         message: "we have problem in deleting word , please try again");
   }
 
+  void addExample(int idAtDatabase) {
+    _tryAndCatchBlock(
+        methodToExecute: () {
+          List<WordModel> words = _getWordsFromDAtabase();
+          words[idAtDatabase] =
+              words[idAtDatabase].addExampleWord(text, isArabic);
+          _wordsBox.put(HiveConstants.wordsBox, words);
+        },
+        message: "we have problem in add example word , please try again");
+  }
+
+  void addSimilarWord(int idAtDatabase) {
+    _tryAndCatchBlock(
+        methodToExecute: () {
+          List<WordModel> words = _getWordsFromDAtabase();
+          words[idAtDatabase] =
+              words[idAtDatabase].addSimilarWord(text, isArabic);
+          _wordsBox.put(HiveConstants.wordsBox, words);
+        },
+        message: "we have problem in add similar word , please try again");
+  }
+
+  void deleteExample(
+      int idAtDatabase, int idAtSimilarWords, isArabicSimilarWord) {
+    _tryAndCatchBlock(
+        methodToExecute: () {
+          List<WordModel> words = _getWordsFromDAtabase();
+          words[idAtDatabase] = words[idAtDatabase]
+              .removeExampleWord(idAtSimilarWords, isArabicSimilarWord);
+          _wordsBox.put(HiveConstants.wordsBox, words);
+        },
+        message: "we have problem in delete example word , please try again");
+  }
+
+  void deleteSimilarWord(
+      int idAtDatabase, int idAtSimilarWords, isArabicSimilarWord) {
+    _tryAndCatchBlock(
+        methodToExecute: () {
+          List<WordModel> words = _getWordsFromDAtabase();
+          words[idAtDatabase] = words[idAtDatabase]
+              .deleteSimilarWord(idAtSimilarWords, isArabicSimilarWord);
+          _wordsBox.put(HiveConstants.wordsBox, words);
+        },
+        message: "we have problem in delete similar word , please try again");
+  }
+
   void _tryAndCatchBlock(
       {required VoidCallback methodToExecute, required String message}) {
     emit(WriteWordsLoading());
@@ -71,5 +117,3 @@ class WriteWordsCubit extends Cubit<WriteWordsState> {
       List.from(_wordsBox.get(HiveConstants.wordsBox, defaultValue: []))
           .cast<WordModel>();
 }
-
-
