@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:words_note/controller/read_words_cubit/read_words_cubit.dart';
+import 'package:words_note/controller/write_words_cubit/write_words_cubit.dart';
 import 'package:words_note/hive_constants.dart';
 import 'package:words_note/models/word_type_adaptor.dart';
 import 'package:words_note/views/screens/home_view.dart';
@@ -19,10 +22,20 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeManager.getTheme(),
-      debugShowCheckedModeBanner: false,
-      home: const HomeView(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => ReadWordsCubit(),
+        ),
+        BlocProvider(
+          create: (context) => WriteWordsCubit(),
+        ),
+      ],
+      child: MaterialApp(
+        theme: ThemeManager.getTheme(),
+        debugShowCheckedModeBanner: false,
+        home: const HomeView(),
+      ),
     );
   }
 }

@@ -10,7 +10,8 @@ part 'write_words_state.dart';
 
 class WriteWordsCubit extends Cubit<WriteWordsState> {
   WriteWordsCubit() : super(WriteWordsInitial());
-  static get(context) => BlocProvider.of<WriteWordsCubit>(context);
+  static WriteWordsCubit get(context) => BlocProvider.of<WriteWordsCubit>(context);
+  
 
   final Box _wordsBox = Hive.box(HiveConstants.wordsBox);
   String text = '';
@@ -27,6 +28,7 @@ class WriteWordsCubit extends Cubit<WriteWordsState> {
 
   void updateColorCode(int colorCode) {
     this.colorCode = colorCode;
+    emit(WriteWordsInitial());
   }
 
   void addWord() {
