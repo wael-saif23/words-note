@@ -15,9 +15,7 @@ class HomeView extends StatelessWidget {
       ),
       body: const Column(
         children: [
-          ColorsWedget(
-            colorActiveIndex: 0xff3F51B5,
-          )
+          
         ],
       ),
     );

@@ -24,6 +24,7 @@ class WriteWordsCubit extends Cubit<WriteWordsState> {
 
   void updateIsArabic(bool isArabic) {
     this.isArabic = isArabic;
+    emit(WriteWordsInitial());
   }
 
   void updateColorCode(int colorCode) {

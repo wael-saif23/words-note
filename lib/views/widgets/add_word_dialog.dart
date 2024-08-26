@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:words_note/controller/write_words_cubit/write_words_cubit.dart';
 import 'package:words_note/views/styles/color_manager.dart';
+import 'package:words_note/views/widgets/ar_or_en_widget.dart';
 import 'package:words_note/views/widgets/colors_wedget.dart';
 
 class AddWordDialog extends StatelessWidget {
@@ -24,6 +25,11 @@ class AddWordDialog extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
             children: [
+              ArOrEnWidget(
+                isSelected: WriteWordsCubit.get(context).isArabic,
+                colorCode: WriteWordsCubit.get(context).colorCode,
+              ),
+              const SizedBox(height: 12),
               ColorsWedget(
                   colorActiveIndex: WriteWordsCubit.get(context).colorCode)
             ],

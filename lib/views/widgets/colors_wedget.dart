@@ -7,6 +7,9 @@ class ColorsWedget extends StatelessWidget {
   final int colorActiveIndex;
 
   final List<int> _colorsCode = const [
+    0xff9E9E9E,
+    0xff000000,
+    0xffFFFFFF,
     0xffFFC107,
     0xffE91E63,
     0xff9C27B0,
@@ -21,9 +24,7 @@ class ColorsWedget extends StatelessWidget {
     0xffFF5722,
     0xff795548,
     0xff607D8B,
-    0xff9E9E9E,
-    0xff000000,
-    0xffFFFFFF,
+    
   ];
   @override
   Widget build(BuildContext context) {
@@ -45,6 +46,7 @@ class ColorsWedget extends StatelessWidget {
     bool isTheSameColor = colorActiveIndex == _colorsCode[index];
     bool isColorWhite = colorActiveIndex == 0xffFFFFFF;
     return InkWell(
+      splashColor: ColorManager.transparent,
       onTap: () =>
           WriteWordsCubit.get(context).updateColorCode(_colorsCode[index]),
       child: AnimatedContainer(
@@ -70,4 +72,5 @@ class ColorsWedget extends StatelessWidget {
       ),
     );
   }
+
 }
