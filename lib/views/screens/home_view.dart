@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:words_note/controller/read_words_cubit/read_words_cubit.dart';
+
 import 'package:words_note/views/styles/color_manager.dart';
 import 'package:words_note/views/widgets/add_word_dialog.dart';
 import 'package:words_note/views/widgets/language_filter_widget.dart';
@@ -19,6 +19,7 @@ class HomeView extends StatelessWidget {
         child: Column(
           children: [
             LanguageFilterWidget(),
+
           ],
         ),
       ),
