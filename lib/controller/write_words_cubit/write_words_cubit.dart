@@ -35,7 +35,6 @@ class WriteWordsCubit extends Cubit<WriteWordsState> {
   void addWord() {
     _tryAndCatchBlock(
         methodToExecute: () {
-          // throw Exception();
           List<WordModel> words = _getWordsFromDAtabase();
           words.add(WordModel(
               idAtDataBase: words.length,
@@ -50,7 +49,6 @@ class WriteWordsCubit extends Cubit<WriteWordsState> {
   void deleteWord(int idAtDatabase) {
     _tryAndCatchBlock(
         methodToExecute: () {
-          
           List<WordModel> words = _getWordsFromDAtabase();
           words.removeAt(idAtDatabase);
           for (var i = idAtDatabase; i < words.length; i++) {

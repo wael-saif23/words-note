@@ -37,13 +37,6 @@ class ReadWordsCubit extends Cubit<ReadWordsState> {
               .cast<WordModel>();
       _removeUnknownWords(wordsToReturn);
       _applySorting(wordsToReturn);
-      for (var i = 0; i < wordsToReturn.length; i++) {
-        print('\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\');
-        print(wordsToReturn[i].idAtDataBase);
-        print(wordsToReturn[i].text);
-        print(wordsToReturn[i].isArabic);
-        print(wordsToReturn[i].colorCode);
-      }
       emit(ReadWordsSuccess(words: wordsToReturn));
     } catch (e) {
       emit(ReadWordsFailure(
@@ -55,8 +48,8 @@ class ReadWordsCubit extends Cubit<ReadWordsState> {
     if (languageFilter == LanguageFilter.both) {
       return;
     }
-    for (var i = 0; i < wordsToReturn.length; i++){
-           if (languageFilter == LanguageFilter.arabic &&
+    for (var i = 0; i < wordsToReturn.length; i++) {
+      if (languageFilter == LanguageFilter.arabic &&
               wordsToReturn[i].isArabic == false ||
           languageFilter == LanguageFilter.english &&
               wordsToReturn[i].isArabic == true) {
