@@ -19,6 +19,7 @@ class _CustomFormState extends State<CustomForm> {
     return Form(
       key: widget.formKey,
       child: TextFormField(
+        autofocus: true,
         controller: textEditingcontroller,
         maxLines: 2,
         minLines: 1,
@@ -27,26 +28,46 @@ class _CustomFormState extends State<CustomForm> {
         decoration: _inputDecoration(),
         onChanged: (value) => WriteWordsCubit.get(context).updateText(value),
         validator: (value) {
-          if (value == null || value.isEmpty) {
-            return 'Please enter some text';
-          }
-
-          _validate(
+          return _validate(
               isArabic: WriteWordsCubit.get(context).isArabic, value: value);
-          return null;
         },
       ),
     );
   }
 
   String? _validate({required bool isArabic, String? value}) {
-    
+    if (value == null || value.trim().isEmpty) {
+      return 'Please enter some text';
+    }
+    for (var i = 0; i < value.length; i++) {
+      CharType charType = _getCharType(value.codeUnitAt(i));
+      if (charType == CharType.notValid) {
+        return 'character nomber ${i + 1} is not valid';
+      } else if (charType == CharType.arabic && isArabic == false) {
+        return 'character nomber ${i + 1} is not english';
+      } else if (charType == CharType.english && isArabic == true) {
+        return 'character nomber ${i + 1} is not arabic';
+      }
+    }
     return null;
   }
+
+  _getCharType(int codeUnit) {
+    if (codeUnit >= 65 && codeUnit <= 90 || codeUnit >= 97 && codeUnit <= 122) {
+      return CharType.english;
+    } else if (codeUnit >= 1569 && codeUnit <= 1610) {
+      return CharType.arabic;
+    } else if (codeUnit == 32) {
+      return CharType.space;
+    }
+    return CharType.notValid;
+  }
+
   InputDecoration _inputDecoration() {
     return InputDecoration(
         labelStyle: const TextStyle(color: ColorManager.emerald),
         labelText: widget.lable,
+        errorStyle: const TextStyle(color: ColorManager.brightPink),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: const BorderSide(
@@ -77,3 +98,5 @@ class _CustomFormState extends State<CustomForm> {
         ));
   }
 }
+
+enum CharType { arabic, english, space, notValid }
