@@ -40,6 +40,7 @@ class _CustomFormState extends State<CustomForm> {
   }
 
   String? _validate({required bool isArabic, String? value}) {
+    
     return null;
   }
   InputDecoration _inputDecoration() {

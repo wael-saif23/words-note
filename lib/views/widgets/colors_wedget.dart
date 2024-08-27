@@ -7,10 +7,12 @@ class ColorsWedget extends StatelessWidget {
   final int colorActiveIndex;
 
   final List<int> _colorsCode = const [
-    0xff9E9E9E,
     0xff000000,
+    0xff9E9E9E,
     0xffFFFFFF,
-    0xffFFC107,
+    0xff795548,
+    0xff607D8B,
+    0xffFF5722,
     0xffE91E63,
     0xff9C27B0,
     0xff673AB7,
@@ -21,10 +23,7 @@ class ColorsWedget extends StatelessWidget {
     0xff4CAF50,
     0xffCDDC39,
     0xffFFEB3B,
-    0xffFF5722,
-    0xff795548,
-    0xff607D8B,
-    
+    0xffFFC107,
   ];
   @override
   Widget build(BuildContext context) {
@@ -44,7 +43,7 @@ class ColorsWedget extends StatelessWidget {
 
   Widget? _itemDesign(int index, BuildContext context) {
     bool isTheSameColor = colorActiveIndex == _colorsCode[index];
-    bool isColorWhite = colorActiveIndex == 0xffFFFFFF;
+    
     return InkWell(
       splashColor: ColorManager.transparent,
       onTap: () =>
@@ -56,21 +55,26 @@ class ColorsWedget extends StatelessWidget {
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           border: isTheSameColor
-              ? Border.all(
-                  width: 2,
-                  color:
-                      isColorWhite ? ColorManager.sunglow : ColorManager.white)
+              ? const Border(
+                  bottom: BorderSide(
+                    color: ColorManager.emerald,
+                    width: 3,
+                  ),
+                  left: BorderSide(
+                    color: ColorManager.emerald,
+                    width: 3,
+                  ),
+                )
               : null,
           color: Color(_colorsCode[index]),
         ),
         child: isTheSameColor
-            ? Icon(
+            ? const Icon(
                 Icons.check,
-                color: isColorWhite ? ColorManager.sunglow : ColorManager.white,
+                color: ColorManager.emerald,
               )
             : null,
       ),
     );
   }
-
 }

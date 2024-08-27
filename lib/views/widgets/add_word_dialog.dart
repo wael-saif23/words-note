@@ -5,6 +5,7 @@ import 'package:words_note/views/styles/color_manager.dart';
 import 'package:words_note/views/widgets/ar_or_en_widget.dart';
 import 'package:words_note/views/widgets/colors_wedget.dart';
 import 'package:words_note/views/widgets/custom_form.dart';
+import 'package:words_note/views/widgets/done_button.dart';
 
 class AddWordDialog extends StatefulWidget {
   const AddWordDialog({super.key});
@@ -41,7 +42,16 @@ class _AddWordDialogState extends State<AddWordDialog> {
               ColorsWedget(
                   colorActiveIndex: WriteWordsCubit.get(context).colorCode),
               const SizedBox(height: 32),
-              CustomForm(lable: 'Add Word', formKey: formKey)
+              CustomForm(lable: 'Add Word', formKey: formKey),
+              const SizedBox(height: 16),
+              DoneButton(colorCode: WriteWordsCubit.get(context).colorCode,
+              onTap: (){
+                if(formKey.currentState!.validate()){
+                  
+                  
+                }
+              },
+              )
             ],
           ),
         );
