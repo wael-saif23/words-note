@@ -21,41 +21,84 @@ class FilterDialoge extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 _textFilterName('Language'),
-                _getFilterField(
-                  labals: ['Arabic', 'English', 'Both'],
-                  onTaps: [
-                    () => ReadWordsCubit.get(context).updateLanguageFilter(
-                          LanguageFilter.arabic,
-                        ),
-                    () => ReadWordsCubit.get(context).updateLanguageFilter(
-                          LanguageFilter.english,
-                        ),
-                    () => ReadWordsCubit.get(context).updateLanguageFilter(
-                          LanguageFilter.both,
-                        ),
-                  ],
-                  conditionsOfActivation: [
-                    ReadWordsCubit.get(context).languageFilter ==
-                        LanguageFilter.arabic,
-                    ReadWordsCubit.get(context).languageFilter ==
-                        LanguageFilter.english,
-                    ReadWordsCubit.get(context).languageFilter ==
-                        LanguageFilter.both,
-                  ],
-                ),
+                _getLanguageFilter(context),
                 const Divider(
+                  height: 24,
                   color: ColorManager.sunglow,
                 ),
                 _textFilterName('Sorted By'),
+                _getSortedByFilter(context),
                 const Divider(
+                  height: 24,
                   color: ColorManager.sunglow,
                 ),
                 _textFilterName('Sorting Type'),
+                _getSortingTypeFilter(context),
               ],
             ),
           ),
         );
       },
+    );
+  }
+
+  Widget _getLanguageFilter(BuildContext context) {
+    return _getFilterField(
+      labals: ['Arabic', 'English', 'Both'],
+      onTaps: [
+        () => ReadWordsCubit.get(context).updateLanguageFilter(
+              LanguageFilter.arabic,
+            ),
+        () => ReadWordsCubit.get(context).updateLanguageFilter(
+              LanguageFilter.english,
+            ),
+        () => ReadWordsCubit.get(context).updateLanguageFilter(
+              LanguageFilter.both,
+            ),
+      ],
+      conditionsOfActivation: [
+        ReadWordsCubit.get(context).languageFilter == LanguageFilter.arabic,
+        ReadWordsCubit.get(context).languageFilter == LanguageFilter.english,
+        ReadWordsCubit.get(context).languageFilter == LanguageFilter.both,
+      ],
+    );
+  }
+
+  Widget _getSortedByFilter(BuildContext context) {
+    return _getFilterField(
+      labals: ['Time', 'Word Length'],
+      onTaps: [
+        () => ReadWordsCubit.get(context).updateSortedByFilter(
+              SortedByFilter.time,
+            ),
+        () => ReadWordsCubit.get(context).updateSortedByFilter(
+              SortedByFilter.length,
+            ),
+      ],
+      conditionsOfActivation: [
+        ReadWordsCubit.get(context).sortedByFilter == SortedByFilter.time,
+        ReadWordsCubit.get(context).sortedByFilter == SortedByFilter.length,
+      ],
+    );
+  }
+
+  Widget _getSortingTypeFilter(BuildContext context) {
+    return _getFilterField(
+      labals: ['ascending', 'descending'],
+      onTaps: [
+        () => ReadWordsCubit.get(context).updateSortingTypeFilter(
+              SortingTypeFilter.ascending,
+            ),
+        () => ReadWordsCubit.get(context).updateSortingTypeFilter(
+              SortingTypeFilter.descending,
+            ),
+      ],
+      conditionsOfActivation: [
+        ReadWordsCubit.get(context).sortingTypeFilter ==
+            SortingTypeFilter.ascending,
+        ReadWordsCubit.get(context).sortingTypeFilter ==
+            SortingTypeFilter.descending,
+      ],
     );
   }
 
@@ -73,7 +116,7 @@ class FilterDialoge extends StatelessWidget {
             splashColor: ColorManager.emerald.withOpacity(.5),
             onTap: onTaps[i],
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
               child: Container(
                 decoration: BoxDecoration(
                   border: Border.all(color: ColorManager.sunglow),
