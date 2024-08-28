@@ -40,12 +40,6 @@ class ReadWordsCubit extends Cubit<ReadWordsState> {
               .cast<WordModel>();
       _removeUnknownWords(wordsToReturn);
       _applySorting(wordsToReturn);
-      for (var i = 0; i < wordsToReturn.length; i++) {
-       
-      print('=============================');
-      print(wordsToReturn[i].idAtDataBase);
-      print(wordsToReturn[i].text);
-      }
       emit(ReadWordsSuccess(words: wordsToReturn));
     } catch (e) {
       emit(ReadWordsFailure(
