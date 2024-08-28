@@ -15,12 +15,13 @@ class WordInfoWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: const EdgeInsets.all(8),
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
         decoration: _getBoxDecoration(),
         child: Row(
           children: [
             _getIsArabicInCircle(),
-            _getWord(),
+            const SizedBox(width: 12),
+            Expanded(child: _getWord()),
             if (onPressed != null) _getIconButton()
           ],
         ));
@@ -31,7 +32,8 @@ class WordInfoWidget extends StatelessWidget {
       onPressed: onPressed,
       icon: const Icon(
         Icons.delete,
-        color: ColorManager.sunglow,
+        color: ColorManager.midnightGreen,
+        size: 32,
       ),
     );
   }
@@ -39,7 +41,6 @@ class WordInfoWidget extends StatelessWidget {
   Text _getWord() {
     return Text(
       word,
-      textAlign: TextAlign.center,
       style: const TextStyle(
         fontSize: 24,
         fontWeight: FontWeight.bold,
@@ -51,8 +52,9 @@ class WordInfoWidget extends StatelessWidget {
   CircleAvatar _getIsArabicInCircle() {
     return CircleAvatar(
       backgroundColor: ColorManager.midnightGreen,
-      radius: 16,
+      radius: 24,
       child: Text(isArabic ? 'ar' : 'en',
+          textAlign: TextAlign.center,
           style: TextStyle(
             fontSize: 24,
             color: Color(colorCode),

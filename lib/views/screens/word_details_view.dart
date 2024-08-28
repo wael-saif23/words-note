@@ -10,13 +10,19 @@ class WordDetailsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _getAppBar(context),
-      body: ListView(children: [
-        WordInfoWidget(
-          colorCode: wordModel.colorCode,
-          isArabic: wordModel.isArabic,
-          word: wordModel.text,
-        ),
-      ]),
+
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        child: ListView(children: [
+          
+          WordInfoWidget(
+            colorCode: wordModel.colorCode,
+            isArabic: wordModel.isArabic,
+            word: wordModel.text,
+         
+          ),
+        ]),
+      ),
     );
   }
 
