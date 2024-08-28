@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:words_note/controller/write_words_cubit/write_words_cubit.dart';
 import 'package:words_note/models/word_model.dart';
 import 'package:words_note/views/widgets/icon_add_word_widget.dart';
+import 'package:words_note/views/widgets/update_word_dialog.dart';
 import 'package:words_note/views/widgets/word_info_widget.dart';
 
 class WordDetailsView extends StatelessWidget {
@@ -26,7 +27,13 @@ class WordDetailsView extends StatelessWidget {
             children: [
               Expanded(child: _getTextLable(text: 'Similar Words')),
               IconAddWordWidget(
-                onPressed: () {},
+                onPressed: () => showDialog(
+                  context: context,
+                  builder: (context) => UpdateWordDialog(
+                    isExampleWord: false,
+                    colorCode: wordModel.colorCode,
+                  ),
+                ),
                 color: Color(wordModel.colorCode),
               ),
             ],
@@ -36,7 +43,13 @@ class WordDetailsView extends StatelessWidget {
             children: [
               Expanded(child: _getTextLable(text: 'Expamples')),
               IconAddWordWidget(
-                onPressed: () {},
+                onPressed: () => showDialog(
+                  context: context,
+                  builder: (context) => UpdateWordDialog(
+                    isExampleWord: true,
+                    colorCode: wordModel.colorCode,
+                  ),
+                ),
                 color: Color(wordModel.colorCode),
               )
             ],

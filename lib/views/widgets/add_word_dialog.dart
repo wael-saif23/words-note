@@ -20,7 +20,8 @@ class _AddWordDialogState extends State<AddWordDialog> {
 
   @override
   Widget build(BuildContext context) {
-    return Dialog(
+    return 
+    Dialog(
         backgroundColor: ColorManager.transparent,
         child: BlocConsumer<WriteWordsCubit, WriteWordsState>(
           listener: (context, state) {
@@ -68,7 +69,7 @@ class _AddWordDialogState extends State<AddWordDialog> {
                           WriteWordsCubit.get(context).addWord();
                           ReadWordsCubit.get(context).getWords();
                         }
-                        print('done button pressed');
+                        
                       },
                     )
                   ],
@@ -77,5 +78,6 @@ class _AddWordDialogState extends State<AddWordDialog> {
             );
           },
         ));
+  
   }
 }
