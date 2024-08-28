@@ -31,9 +31,9 @@ class _AddWordDialogState extends State<AddWordDialog> {
                 SnackBar(
                     backgroundColor: ColorManager.sunglow,
                     content: Text(
-                  state.message,
-                  style: const TextStyle(color: ColorManager.brightPink),
-                )),
+                      state.message,
+                      style: const TextStyle(color: ColorManager.brightPink),
+                    )),
               );
             }
           },
