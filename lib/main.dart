@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => ReadWordsCubit(),
+          create: (context) => ReadWordsCubit()..getWords(),
         ),
         BlocProvider(
           create: (context) => WriteWordsCubit(),

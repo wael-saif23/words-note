@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:words_note/views/styles/color_manager.dart';
 import 'package:words_note/views/widgets/add_word_dialog.dart';
 import 'package:words_note/views/widgets/language_filter_widget.dart';
+import 'package:words_note/views/widgets/words_widget.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -19,7 +20,7 @@ class HomeView extends StatelessWidget {
         child: Column(
           children: [
             LanguageFilterWidget(),
-
+            WordsWidget(),
           ],
         ),
       ),
