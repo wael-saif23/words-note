@@ -53,8 +53,8 @@ class WriteWordsCubit extends Cubit<WriteWordsState> {
           words.removeAt(idAtDatabase);
           for (var i = idAtDatabase; i < words.length; i++) {
             words[i] = words[i].decrementIdAtDataBase();
-            _wordsBox.put(HiveConstants.wordsList, words);
           }
+          _wordsBox.put(HiveConstants.wordsList, words);
         },
         message: "we have problem in deleting word , please try again");
   }

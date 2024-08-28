@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:words_note/controller/write_words_cubit/write_words_cubit.dart';
 import 'package:words_note/models/word_model.dart';
 
 class WordDetailsView extends StatelessWidget {
@@ -15,7 +16,17 @@ class WordDetailsView extends StatelessWidget {
             color: Color(wordModel.colorCode),
           ),
         ),
+        actions: [
+          IconButton(
+            onPressed: () => _deleteWord(context),
+            icon: const Icon(Icons.delete),
+          ),
+        ],
       ),
     );
+  }
+ void _deleteWord(BuildContext context) {
+    WriteWordsCubit.get(context).deleteWord(wordModel.idAtDataBase);
+    Navigator.pop(context);
   }
 }
