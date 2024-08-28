@@ -20,7 +20,8 @@ class HomeView extends StatelessWidget {
         child: Column(
           children: [
             LanguageFilterWidget(),
-            WordsWidget(),
+            SizedBox(height: 12),
+            Expanded(child: WordsWidget()),
           ],
         ),
       ),

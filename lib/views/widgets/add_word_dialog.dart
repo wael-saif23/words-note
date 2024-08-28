@@ -41,7 +41,7 @@ class _AddWordDialogState extends State<AddWordDialog> {
             return AnimatedContainer(
               decoration: BoxDecoration(
                   color: Color(WriteWordsCubit.get(context).colorCode)
-                      .withOpacity(.8),
+                      .withOpacity(.95),
                   borderRadius: const BorderRadius.all(Radius.circular(12))),
               duration: const Duration(milliseconds: 500),
               padding: const EdgeInsets.all(12),
