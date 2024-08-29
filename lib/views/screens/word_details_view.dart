@@ -37,8 +37,7 @@ class _WordDetailsViewState extends State<WordDetailsView> {
                 int index = state.words.indexWhere((element) =>
                     element.idAtDataBase == _wordModel.idAtDataBase);
                 if (index == -1) {
-                  return const ExceptionWidget(
-                      iconData: Icons.error, message: 'Word Not Found');
+                  return const LoadingWidget();
                 }
                 _wordModel = state.words[index];
                 return _getSuccessState(context);

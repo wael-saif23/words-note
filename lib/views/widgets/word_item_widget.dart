@@ -10,10 +10,12 @@ class WordItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => WordDetailsView(wordModel: wordModel)
-          )
-          ).then((value) => ReadWordsCubit.get(context).getWords()),
+      onTap: () => Navigator.of(context)
+          .push(MaterialPageRoute(
+              builder: (context) => WordDetailsView(wordModel: wordModel)))
+          .then(
+            (value) => ReadWordsCubit.get(context).getWords(),
+          ),
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
