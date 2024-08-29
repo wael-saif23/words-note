@@ -77,6 +77,32 @@ class WriteWordsCubit extends Cubit<WriteWordsState> {
           words[idAtDatabase] =
               words[idAtDatabase].addSimilarWord(text, isArabic);
           _wordsBox.put(HiveConstants.wordsList, words);
+          for (var i = 0;
+              i < words[idAtDatabase].arabicSimilarWords.length;
+              i++) {
+            print('==============arabicSimilarWords==');
+            print(words[idAtDatabase].arabicSimilarWords[i]);
+
+            for (var i = 0;
+                i < words[idAtDatabase].englishSimilarWords.length;
+                i++) {
+              print('==============englishSimilarWords==');
+              print(words[idAtDatabase].englishSimilarWords[i]);
+
+              for (var i = 0;
+                i < words[idAtDatabase].arabicExamples.length;
+                i++) {
+              print('==============arabicExamples==');
+              print(words[idAtDatabase].arabicExamples[i]);
+              }
+                 for (var i = 0;
+                i < words[idAtDatabase].englishExamples.length;
+                i++) {
+              print('==============englishExamples==');
+              print(words[idAtDatabase].englishExamples[i]);
+              }
+            }
+          }
         },
         message: "we have problem in add similar word , please try again");
   }
@@ -94,7 +120,7 @@ class WriteWordsCubit extends Cubit<WriteWordsState> {
   }
 
   void deleteSimilarWord(
-      int idAtDatabase, int idAtSimilarWords, isArabicSimilarWord) {
+      int idAtDatabase, int idAtSimilarWords,bool isArabicSimilarWord) {
     _tryAndCatchBlock(
         methodToExecute: () {
           List<WordModel> words = _getWordsFromDAtabase();

@@ -15,6 +15,7 @@ class WordInfoWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+        margin: const EdgeInsets.only(bottom: 8),
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
         decoration: _getBoxDecoration(),
         child: Row(
